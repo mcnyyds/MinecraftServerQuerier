@@ -23,22 +23,27 @@ public class McSQ {
 
         return content.toString();
     }
-    public static String MSGet(String host, int port) throws Exception {
+
+    public static String msGet(String host, int port) throws Exception {
         URL url = new URL("http://api.wer.plus/api/mcse?host=" + host + "&" + "port=" + port);
         return getString(url);
     }
-    public static String MSGet(String host) throws Exception {
+    public static String msGet(String host) throws Exception {
         URL url = new URL("http://api.wer.plus/api/mcse?host=" + host);
         return getString(url);
     }
 
-
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("host:port：");
-        String[] temp = scanner.nextLine().split(":");
-        System.out.println(MSGet(temp[0], Integer.parseInt(temp[1])));
+//        System.out.print("");
+        String temp_ = scanner.nextLine();
+        temp_=temp_.trim();
+        if (temp_.contains(":")) {
+            String[] temp = temp_.split(":");
+            System.out.println(msGet(temp[0], Integer.parseInt(temp[1])));
+        }
+        System.out.println(msGet(temp_));
     }
 }
 
